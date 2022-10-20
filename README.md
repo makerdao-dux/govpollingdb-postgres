@@ -1,6 +1,6 @@
 # govpollingdb-postgres
 
-This repo will create a docker image out of an SQL dump for use in our e2e testing setup. The created docker image is a base for the postgres database required by the gov-polling-db. These instructions assume you are already running the docker services from [The Governance Portal](https://github.com/makerdao/governance-portal-v2) and you have modified the database with your desired changes.
+This repo will create a docker image out of an SQL dump for use in our e2e testing setup. The created docker image is a base for the postgres database required by the [gov-polling-db](https://github.com/makerdao/gov-polling-db). These instructions assume you are already running the docker services from [The Governance Portal](https://github.com/makerdao/governance-portal-v2) and you have modified the database with your desired changes.
 
 To update this docker image, follow these steps:
 
