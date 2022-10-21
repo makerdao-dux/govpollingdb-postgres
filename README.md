@@ -16,7 +16,7 @@ docker exec -it <YOUR_CONTAINER_ID> /bin/bash
 pg_dump -U user database > gpdb.sql
 ```
 
-3. Copy the SQL file to this directory
+3. Type `exit` to exit the container. Now copy the SQL file to this directory
 
 ```
 docker cp <YOUR_CONTAINER_ID>:/gpdb.sql .
