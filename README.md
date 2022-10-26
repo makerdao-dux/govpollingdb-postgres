@@ -10,10 +10,11 @@ To update this docker image, follow these steps:
 docker exec -it <YOUR_CONTAINER_ID> /bin/bash
 ```
 
-2. Dump the postgres database
+2. Make a SQL dump of the database, this provides docker with the initial data when creating the new image.
 
 ```
 pg_dump -U user database > gpdb.sql
+
 ```
 
 3. Type `exit` to exit the container. Now copy the SQL file to this directory
@@ -22,13 +23,19 @@ pg_dump -U user database > gpdb.sql
 docker cp <YOUR_CONTAINER_ID>:/gpdb.sql .
 ```
 
-4. Build the new image
+4. Make a TAR backup of the database. This is copied to the filesystem and restored between tests for the Governance Portal
+
+```
+docker exec -it postgres-vulcan2x-arbitrum pg_dump -F t database > gpdb.tar -U user
+```
+
+5. Build the new image
 
 ```
 docker build -t makerdaodux/govpolldb-postgres ./
 ```
 
-5. Push the image to dockerhub
+6. Push the image to dockerhub
 
 ```
 docker push makerdaodux/govpolldb-postgres:latest
