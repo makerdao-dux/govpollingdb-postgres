@@ -23,7 +23,7 @@ pg_dump -U user database > gpdb.sql
 docker cp <YOUR_CONTAINER_ID>:/gpdb.sql .
 ```
 
-4. Make a TAR backup of the database. This is copied to the filesystem and restored between tests for the Governance Portal
+4. Make a TAR backup of the database. This is copied to the filesystem and restored between tests for the Governance Portal. You may need to delete the file if it already exists.
 
 ```
 docker exec -it postgres-vulcan2x-arbitrum pg_dump -F t database > gpdb.tar -U user
@@ -32,7 +32,7 @@ docker exec -it postgres-vulcan2x-arbitrum pg_dump -F t database > gpdb.tar -U u
 5. Build the new image
 
 ```
-docker build -t makerdaodux/govpolldb-postgres ./
+docker build -t makerdaodux/govpolldb-postgres:latest ./
 ```
 
 6. Push the image to dockerhub
