@@ -29,14 +29,8 @@ docker cp <YOUR_CONTAINER_ID>:/gpdb.sql .
 docker exec -it postgres-vulcan2x-arbitrum pg_dump -F t database > gpdb.tar -U user
 ```
 
-5. Build the new image
-
+5. Build and push the new image
 ```
-docker build -t makerdaodux/govpolldb-postgres:latest ./
+docker buildx build --platform linux/amd64,linux/arm64 -t makerdaodux/govpolldb-postgres:v0.1 --push ./
 ```
-
-6. Push the image to dockerhub
-
-```
-docker push makerdaodux/govpolldb-postgres:latest
-```
+Github Actions runs linux/amd64 so we need to make sure docker builds for that platform
